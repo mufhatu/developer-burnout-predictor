@@ -8,7 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app/ .
 COPY data/ ../data/
 
-# Add this line to fix the imports
 ENV PYTHONPATH=/
 
 RUN python model.py
