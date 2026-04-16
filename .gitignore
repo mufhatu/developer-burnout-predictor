@@ -1,0 +1,13 @@
+# python
+venv/
+app/__pycache__/
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# model file
+app/model.pkl
+
+# vs code
+.vscode/
