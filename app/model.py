@@ -6,7 +6,9 @@ from sklearn.model_selection import KFold
 from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 
+# directory where model.py lives → app/
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# directory where model.py lives → app/
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 DATA_PATH = os.path.join(
