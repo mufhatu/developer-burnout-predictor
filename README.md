@@ -107,18 +107,20 @@ Example Response:
 --------------------------------------------------------------------------------------------------------------
 
 🧠 Why built this way
-The focus wasn’t just the model — it was making sure the whole thing behaves like a real service:
-•	clear separation between API and model logic 
-•	structured inputs using schemas 
-•	containerized so it runs the same everywhere 
-•	simple enough to extend later (more features, better model, etc.)
+
+1. The focus wasn’t just the model — it was making sure the whole thing behaves like a real service:
+2. clear separation between API and model logic 
+3  structured inputs using schemas 
+4. containerized so it runs the same everywhere 
+5. simple enough to extend later (more features, better model, etc.)
 
 
 📌 What could be improved next
-•	Improve model performance with better tuning 
-•	Add authentication for API access 
-•	Add logging and monitoring 
-•	Deploy it to a cloud platform
+
+1. Improve model performance with better tuning 
+2. Add authentication for API access 
+3. Add logging and monitoring 
+4. Deploy it to a cloud platform
 
 👤 Author
 Built by a Master’s Computer Science student focused on backend systems, machine learning, and DevOps-style workflows.
