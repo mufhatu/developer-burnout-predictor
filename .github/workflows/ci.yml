@@ -51,6 +51,16 @@ jobs:
       - name: Test Docker container
         run: |
           docker run -d -p 8001:8000 --name test-container burnout-predictor
-          sleep 5
+          
+          # Wait for container to be ready with retry logic
+          for i in {1..30}; do
+            if curl -f http://localhost:8001/health 2>/dev/null; then
+              echo "Container is ready"
+              break
+            fi
+            echo "Waiting for container... (attempt $i/30)"
+            sleep 1
+          done
+          
           curl -f http://localhost:8001/health
           docker stop test-container
