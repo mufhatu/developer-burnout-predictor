@@ -1,6 +1,7 @@
 # 🧠 Developer Burnout Prediction API
 
-This is a simple machine learning service that predicts burnout risk based on developer work habits and experience. The goal was to build something end-to-end — from dataset to a working API that can actually be deployed and used.
+This is a machine learning service that predicts burnout risk based on developer work habits and experience.
+The goal was to build something end-to-end — from dataset to a working API that can actually be deployed and used.
 
 It’s built with FastAPI and packaged using Docker so it can run anywhere without setup issues.
 
@@ -36,7 +37,8 @@ Dockerfile
 docker-compose.yml
 requirements.txt
 
----
+
+--------------------------------------------------------------------------------------------------------------
 
 ## ⚙️ Project structure
 Python
@@ -45,6 +47,20 @@ Scikit-learn
 Pandas / NumPy
 Uvicorn
 Docker
+
+--------------------------------------------------------------------------------------------------------------
+
+## 🔄 CI / Automation
+
+This project uses GitHub Actions for continuous integration.
+
+On every push and pull request, the pipeline automatically:
+
+- Installs dependencies
+- Builds the application environment
+- Verifies the project structure and imports
+
+This ensures that changes don’t break the application and keeps the codebase deployment-ready at all times.
 
 --------------------------------------------------------------------------------------------------------------
 
@@ -108,16 +124,16 @@ Example Response:
 
 🧠 Why built this way
 
-1. The focus wasn’t just the model — it was making sure the whole thing behaves like a real service:
+1. The focus wasn’t just the model — it was making sure the whole system behaves like a real service:
 2. clear separation between API and model logic 
-3  structured inputs using schemas 
+3  structured inputs using Pydantic schemas 
 4. containerized so it runs the same everywhere 
 5. simple enough to extend later (more features, better model, etc.)
 
 
-📌 What could be improved next
+📌 Possible improvemets
 
-1. Improve model performance with better tuning 
+1. Improve model performance with feature tuning 
 2. Add authentication for API access 
 3. Add logging and monitoring 
 4. Deploy it to a cloud platform
