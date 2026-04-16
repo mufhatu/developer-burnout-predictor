@@ -25,20 +25,32 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Train model
-        run: python app/model.py
+        working-directory: app
+        run: python model.py
 
       - name: Test health endpoint
         run: |
-          uvicorn app.main:app --host 0.0.0.0 --port 8000 &
-          sleep 3
-          curl -f http://localhost:8000/health
+          uvicorn app.main:app --host 0.0.0.0 --port 8000 > server.log 2>&1 &
+          SERVER_PID=$!
+          for i in {1..10}; do
+            if curl -f http://localhost:8000/health 2>/dev/null; then
+              echo "Server is ready"
+              kill $SERVER_PID 2>/dev/null || true
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Server failed to start. Logs:"
+          cat server.log
+          kill $SERVER_PID 2>/dev/null || true
+          exit 1
 
       - name: Build Docker image
         run: docker build -t burnout-predictor .
 
       - name: Test Docker container
         run: |
-          docker run -d -p 8000:8000 --name test-container burnout-predictor
+          docker run -d -p 8001:8000 --name test-container burnout-predictor
           sleep 5
-          curl -f http://localhost:8000/health
+          curl -f http://localhost:8001/health
           docker stop test-container
