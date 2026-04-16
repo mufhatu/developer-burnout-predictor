@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from schemas import DeveloperMetrics, PredictionResult
-from model import predict_burnout
+from .schemas import DeveloperMetrics, PredictionResult
+from .model import predict_burnout
 
 app = FastAPI(title=" Developer Burnout Predictor")
 
